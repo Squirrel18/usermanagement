@@ -8,20 +8,8 @@
         <title><?php echo $title ?></title>
     </head>
     <body ng-app="Management">
-        <div class="container text-center" ng-controller="loginController">
-            <div class="row">
-                <div class="col-xs-12 col-md-3">
-                    <h1>Menu</h1>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Clientes</button>
-                    <a href="#!users">Usuarios {{ 1+1 }}</a>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Usuarios</button>
-                </div>
-                <div class="col-xs-12 col-md-9" ng-view>
-                    <h1>Section</h1>
-                    <
-                </div>
-            </div>
-        </div>
+        <h1>Users view</h1>
+        <div ng-controller="usersController"></div>
     </body>
     <script src="<?php echo base_url('js/angular.min.js'); ?>"></script>
     <script src="<?php echo base_url('js/angular-route.min.js'); ?>"></script>

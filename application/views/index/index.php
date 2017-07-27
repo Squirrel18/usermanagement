@@ -25,6 +25,7 @@
         </div>
     </body>
     <script src="<?php echo base_url('js/angular.min.js'); ?>"></script>
+    <script src="<?php echo base_url('js/angular-route.min.js'); ?>"></script>
     <script src="<?php echo base_url('js/app.js'); ?>"></script>
     <script src="<?php echo base_url('js/controller/controller.js'); ?>"></script>
 </html>
