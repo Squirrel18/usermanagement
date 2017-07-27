@@ -40,20 +40,52 @@ app.controller('loginController', ['$scope', '$http', function($scope, $http) {
     })();
 }]);
 
-app.controller('usersController', ['$scope', '$http', function($scope, $http) { 
-    $scope.submit = function() {
+app.controller('usersController', ['$scope', '$http', '$location', '$rootScope', function($scope, $http, $location, $rootScope) { 
+    (function() {
         var req = {
             method: 'POST',
-            url: 'index.php/autho/authorization',
+            url: 'users/',
+        }
+        $http(req).then(function(response) {
+            $scope.data = response.data;
+        }, function(response) {
+            alert("no data");
+            return;
+        });
+    })();
+
+    $scope.edit = function(data) {
+        var req = {
+            method: 'POST',
+            url: 'users/edit/' + data,
+        }
+        $http(req).then(function(response) {
+            $rootScope.user = response.data;
+            $location.url('/edit');
+        }, function(response) {
+            alert("no data");
+            return;
+        });
+    };
+
+    $scope.editSubmit = function() {
+        var req = {
+            method: 'POST',
+            url: 'users/edit/update',
             headers: {
-                'Authorization': localStorage.getItem('autho')
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: {
+                id: $rootScope.user.id,
+                user: $scope.usuario,
+                password: $scope.contrasena,
+                state: $scope.estado
             }
         }
         $http(req).then(function(response) {
-            $http.defaults.headers.common.Authorization = localStorage.getItem('autho');
-
+            console.log(response);
         }, function(response) {
-            alert("eroor not autho");
+            alert("no data");
             return;
         });
     };

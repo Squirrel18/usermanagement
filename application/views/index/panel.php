@@ -10,13 +10,11 @@
     <body ng-app="Management">
         <div class="container text-center" ng-controller="loginController">
             <div class="row">
-                <div class="col-xs-12 col-md-3">
+                <div class="col-xs-12 col-md-2">
                     <h1>Menu</h1>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Clientes</button>
-                    <a href="#!users">Usuarios {{ 1+1 }}</a>
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Usuarios</button>
+                    <a href="#!users">Usuarios</a>
                 </div>
-                <div class="col-xs-12 col-md-9" ng-view>
+                <div class="col-xs-12 col-md-10" ng-view>
                     <h1>Section</h1>
                     <
                 </div>

@@ -4,15 +4,39 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
         <title><?php echo $title ?></title>
     </head>
     <body ng-app="Management">
         <h1>Users view</h1>
-        <div ng-controller="usersController"></div>
+        <div ng-controller="usersController">
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        <a ng-click="orderByField='id'; reverseSort = !reverseSort">
+                            Id <span ng-show="orderByField == 'firstName'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a ng-click="orderByField='user'; reverseSort = !reverseSort">
+                            Usuario <span ng-show="orderByField == 'firstName'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                        </a>
+                    </th>
+                    <th>State</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+                <tr ng-repeat="data in data|orderBy:orderByField:reverseSort">
+                    <td>{{ data.id }}</td>
+                    <td>{{ data.user }}</td>
+                    <td>{{ data.state }}</td>
+                    <td><a ng-click="edit(data.id)">Editar</a></td>
+                    <td><a href="">Eliminar</a></td>
+                </tr>
+            </table>
+        </div>
     </body>
-    <script src="<?php echo base_url('js/angular.min.js'); ?>"></script>
-    <script src="<?php echo base_url('js/angular-route.min.js'); ?>"></script>
-    <script src="<?php echo base_url('js/app.js'); ?>"></script>
-    <script src="<?php echo base_url('js/controller/controller.js'); ?>"></script>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/angular-route.min.js"></script>
+    <script src="../js/app.js"></script>
+    <script src="../js/controller/controller.js"></script>
 </html>
