@@ -10,14 +10,14 @@
     <body ng-app="Management">
         <div class="container text-center" ng-controller="MainController">
             <h1>This ais a text</h1>
-            <form name="login">
+            <form name="login" id="login">
                 <div class="form-group">
                     <h2>Usuario</h2>
                     <input type="text" class="form-control" ng-model="user" required placeholder="Usuario" name="user">
                 </div>
                 <div class="form-group">
                     <h2 for="password">Contraseña</h2>
-                    <input type="password" class="form-control" required placeholder="Contraseña" name="password">
+                    <input type="password" class="form-control" ng-model="password" required placeholder="Contraseña" name="password">
                 </div>
                 <button type="submit" class="btn btn-default" ng-click="submit()">Submit</button>
             </form>

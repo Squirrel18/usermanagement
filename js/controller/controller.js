@@ -3,9 +3,16 @@ app.controller('MainController', ['$scope', '$http', function($scope, $http) {
     $scope.submit = function() {
         var req = {
             method: 'POST',
-            url: 'index.php/autho',
-            data: { test: 'test' }
+            url: 'index.php/autho/login',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: { user: $scope.user, password: $scope.password }
         }
-        $http(req).then(function(){alert("succeses");}, function(){alert("eroor")});
+        $http(req).then(function(response) {
+            alert(response.data);
+        }, function(response) {
+            alert("eroor")
+        });
     };
 }]);

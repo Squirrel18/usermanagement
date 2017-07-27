@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Root extends CI_Controller {
+class Autho extends CI_Controller {
 
 	public function __construct() {
         parent::__construct();
@@ -9,6 +9,7 @@ class Root extends CI_Controller {
     }
 
 	public function login()	{
-		echo "login";
+		$data = json_decode(file_get_contents('php://input'), true);
+		echo "User ".$data['user']." "."Pass ".$data['password'];
 	}
 }
