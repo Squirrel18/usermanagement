@@ -22,7 +22,6 @@
                 <button type="submit" class="btn btn-default" ng-click="submit()">Submit</button>
             </form>
             <h1 ng-show="login.user.$invalid">  invalid  </h1>
-            <h1 ng-show="login.password.$touched">  invalid pass  </h1>
         </div>
     </body>
     <script src="<?php echo base_url('js/angular.min.js'); ?>"></script>
