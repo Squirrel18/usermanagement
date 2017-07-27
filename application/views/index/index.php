@@ -10,28 +10,19 @@
     <body ng-app="Management">
         <div class="container text-center" ng-controller="MainController">
             <h1>This ais a text</h1>
-            <form>
+            <form name="login">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Usuario</label>
-                    <input type="text" class="form-control" ng-model="user" id="exampleInputEmail1" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <h2>Usuario</h2>
+                    <input type="text" class="form-control" ng-model="user" required placeholder="Usuario" name="user">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
-                    <input type="file" id="exampleInputFile">
-                    <p class="help-block">Example block-level help text here.</p>
+                    <h2 for="password">Contraseña</h2>
+                    <input type="password" class="form-control" required placeholder="Contraseña" name="password">
                 </div>
-                <div class="checkbox">
-                    <label>
-                    <input type="checkbox"> Check me out
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" ng-click="submit()">Submit</button>
             </form>
-            <h1>{{ user }}</h1>
+            <h1 ng-show="login.user.$invalid">  invalid  </h1>
+            <h1 ng-show="login.password.$touched">  invalid pass  </h1>
         </div>
     </body>
     <script src="<?php echo base_url('js/angular.min.js'); ?>"></script>
