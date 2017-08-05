@@ -16,7 +16,6 @@
                 </div>
                 <div class="col-xs-12 col-md-10" ng-view>
                     <h1>Section</h1>
-                    <
                 </div>
             </div>
         </div>
