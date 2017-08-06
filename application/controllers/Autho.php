@@ -16,15 +16,19 @@ class Autho extends CI_Controller {
     }
 
 	public function login()	{
-		$data = json_decode(file_get_contents('php://input'), true);
-		
-		if(!isset($data['user']) || !isset($data['password'])) {
+
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('user', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+
+		if($this->form_validation->run() == FALSE) {
 			$this->output->set_status_header(400);
 		} else {
-            //$password = html_escape($this->input->get_post('passcode', TRUE));
+			//$password = html_escape($this->input->get_post('passcode', TRUE));
             //$password = password_hash($password, PASSWORD_DEFAULT);
-			$CleanUser = xss_clean($data['user'], FALSE);
-			$CleanPassword = xss_clean($data['password'], FALSE);
+			$CleanUser = xss_clean($this->input->get_post('user'), FALSE);
+			$CleanPassword = xss_clean($this->input->get_post('password'), FALSE);
             $query = $this->Autho_model->login(html_escape($CleanUser), html_escape($CleanPassword));
             if(isset($query)) {
 				$private_key = base64_encode("PrivateKeyProject");
@@ -41,7 +45,7 @@ class Autho extends CI_Controller {
             } else {
                 $this->output->set_status_header(403);
             }
-        }
+		}
 	}
 
 	public function authorization() {
@@ -52,6 +56,8 @@ class Autho extends CI_Controller {
 			$decoded = JWT::decode($tokenRequest, $private_key, array('HS256'));
 			if(isset($decoded)) {
 				$this->output->set_status_header(200);
+			} else {
+				$this->output->set_status_header(403);
 			}
 		} catch(Exception $e) {
 			$this->output->set_status_header(403);
